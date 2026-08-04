@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vérité — Part of your team, shaped by your needs</title>
+<meta name="description" content="Vérité is a dedicated AI consultancy for small and mid-sized businesses. We identify practical AI use cases, build them with you, and keep them running." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  /* ============================================================
+     Vérité Consulting — design tokens
+     (inlined from the _ds/v-rit-consulting-design-system bundle)
+     ============================================================ */
+  :root {
+    /* Brand blue (core) */
+    --blue-50:  #EEF3FB; --blue-100: #D9E4F4; --blue-200: #B6C9E8; --blue-300: #84A2D4;
+    --blue-400: #5077BC; --blue-500: #2F569E; --blue-600: #21427F; --blue-700: #1A3566;
+    --blue-800: #142A51; --blue-900: #0F1F3B; --blue-950: #0A1526;
+
+    /* Neutral slate */
+    --slate-0: #FFFFFF; --slate-50: #F8FAFC; --slate-100: #F1F4F8; --slate-200: #E4E9F0;
+    --slate-300: #CDD5E0; --slate-400: #9AA7B8; --slate-500: #6B7A8F; --slate-600: #4A5768;
+    --slate-700: #333E4D; --slate-800: #222A36; --slate-900: #141920;
+
+    /* Semantic hues */
+    --green-50: #E9F5EF; --green-500: #1E8A5B; --green-600: #17724A;
+    --amber-50: #FBF2E3; --amber-500: #B7791F; --amber-600: #955F16;
+    --red-50: #FBECEA; --red-500: #C0392B; --red-600: #9E2C21;
+
+    /* Brand aliases */
+    --brand: var(--blue-700); --brand-strong: var(--blue-800); --brand-soft: var(--blue-50);
+    --accent: var(--blue-500); --accent-hover: var(--blue-600);
+
+    /* Text */
+    --text-strong: var(--slate-900); --text-body: var(--slate-700); --text-muted: var(--slate-500);
+    --text-subtle: var(--slate-400); --text-onbrand: var(--slate-0); --text-link: var(--blue-600);
+
+    /* Surfaces */
+    --surface-page: var(--slate-50); --surface-card: var(--slate-0); --surface-sunken: var(--slate-100);
+    --surface-inverse: var(--blue-900); --surface-brand: var(--blue-700);
+
+    /* Borders */
+    --border-subtle: var(--slate-200); --border-default: var(--slate-300);
+    --border-strong: var(--slate-400); --border-focus: var(--blue-500);
+
+    /* States */
+    --success: var(--green-500); --success-soft: var(--green-50);
+    --warning: var(--amber-500); --warning-soft: var(--amber-50);
+    --danger: var(--red-500); --danger-soft: var(--red-50);
+    --focus-ring: 0 0 0 3px rgba(47, 86, 158, 0.35);
+
+    /* Type */
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem; --text-lg: 1.125rem;
+    --text-xl: 1.375rem; --text-2xl: 1.75rem; --text-3xl: 2.25rem; --text-4xl: 3rem; --text-5xl: 3.75rem;
+    --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+    --leading-tight: 1.15; --leading-snug: 1.3; --leading-normal: 1.55; --leading-relaxed: 1.7;
+    --tracking-tight: -0.02em; --tracking-snug: -0.01em; --tracking-normal: 0;
+    --tracking-wide: 0.04em; --tracking-caps: 0.08em;
+
+    /* Spacing / layout */
+    --space-0: 0; --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+    --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem; --space-9: 4rem;
+    --space-10: 5rem; --space-12: 6rem; --container-max: 1200px; --gutter: var(--space-5);
+
+    /* Radius */
+    --radius-none: 0; --radius-xs: 3px; --radius-sm: 5px; --radius-md: 8px; --radius-lg: 12px;
+    --radius-xl: 16px; --radius-2xl: 24px; --radius-full: 999px;
+
+    /* Elevation + motion */
+    --shadow-xs: 0 1px 2px rgba(15, 31, 59, 0.06);
+    --shadow-sm: 0 1px 3px rgba(15, 31, 59, 0.08), 0 1px 2px rgba(15, 31, 59, 0.04);
+    --shadow-md: 0 4px 12px rgba(15, 31, 59, 0.08), 0 2px 4px rgba(15, 31, 59, 0.05);
+    --shadow-lg: 0 12px 28px rgba(15, 31, 59, 0.12), 0 4px 8px rgba(15, 31, 59, 0.06);
+    --shadow-xl: 0 24px 48px rgba(15, 31, 59, 0.16);
+    --ring-focus: 0 0 0 3px rgba(47, 86, 158, 0.35);
+    --ease-standard: cubic-bezier(0.2, 0, 0.1, 1);
+    --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-fast: 120ms; --dur-normal: 200ms; --dur-slow: 320ms;
+  }
+
+  /* ---- Base ---- */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); color: var(--text-body); line-height: var(--leading-normal); -webkit-font-smoothing: antialiased; }
+  a { color: var(--text-link); }
+  a:hover { color: var(--accent-hover); }
+  .constellation { position: absolute; pointer-events: none; z-index: 0; }
+  .constellation svg { width: 100%; height: 100%; display: block; }
+
+  /* ---- Button (design-system: VRitConsultingDesignSystem.Button) ---- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-snug); line-height: 1; white-space: nowrap; cursor: pointer; text-decoration: none; border-radius: var(--radius-md); transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard); }
+  .btn svg { flex: none; }
+  .btn-md { height: 40px; padding: 0 16px; gap: 8px; font-size: var(--text-sm); }
+  .btn-lg { height: 48px; padding: 0 22px; gap: 9px; font-size: var(--text-base); }
+  .btn-primary { background: var(--brand); color: var(--text-onbrand); border: 1px solid var(--brand); }
+  .btn-primary:hover { background: var(--brand-strong); border-color: var(--brand-strong); color: var(--text-onbrand); }
+  .btn-accent { background: var(--accent); color: var(--text-onbrand); border: 1px solid var(--accent); }
+  .btn-accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--text-onbrand); }
+  .btn:focus-visible { outline: none; box-shadow: var(--ring-focus); }
+
+  /* ---- Card (design-system: VRitConsultingDesignSystem.Card) ---- */
+  .card { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-normal) var(--ease-standard), transform var(--dur-normal) var(--ease-standard); }
+  .card.pad-lg { padding: var(--space-6); }
+  .card.card-hover:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+  /* ---- Badge (design-system: VRitConsultingDesignSystem.Badge) ---- */
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; height: 22px; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-snug); border-radius: var(--radius-full); white-space: nowrap; }
+  .badge-brand { color: var(--blue-700); background: var(--blue-50); }
+
+  /* ---- Eyebrow ---- */
+  .eyebrow { font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+
+  /* ---- Layout grids (responsive) ---- */
+  .grid { display: grid; gap: var(--space-5); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  @media (max-width: 900px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: var(--text-4xl) !important; }
+    .section-h2 { font-size: var(--text-2xl) !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<div style="background:var(--surface-page)">
+
+  <!-- Header -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:var(--container-max);margin:0 auto;padding:16px var(--space-6);min-height:88px;display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+      <a href="#hero" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
+        <span style="font-family:var(--font-display);font-weight:700;font-size:28px;letter-spacing:-0.03em;color:var(--brand)">Vérité<span style="color:var(--accent)">.</span></span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:2px;margin-left:var(--space-3);flex-wrap:wrap">
+        <a href="#introduction" style="font-size:var(--text-sm);font-weight:500;color:var(--text-body);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md);white-space:nowrap">Introduction</a>
+        <a href="#opportunity" style="font-size:var(--text-sm);font-weight:500;color:var(--text-body);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md);white-space:nowrap">Opportunity</a>
+        <a href="#approach" style="font-size:var(--text-sm);font-weight:500;color:var(--text-body);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md);white-space:nowrap">Approach</a>
+        <a href="#experience" style="font-size:var(--text-sm);font-weight:500;color:var(--text-body);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md);white-space:nowrap">Experience</a>
+        <a href="#team" style="font-size:var(--text-sm);font-weight:500;color:var(--text-body);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md);white-space:nowrap">Team</a>
+      </nav>
+      <div style="margin-left:auto">
+        <a class="btn btn-primary btn-md" href="mailto:enquiries@verite.com?subject=Starting%20a%20conversation%20with%20V%C3%A9rit%C3%A9">Start a conversation<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" style="position:relative;overflow:hidden;background:linear-gradient(180deg, #fff 0%, var(--surface-page) 100%);border-bottom:1px solid var(--border-subtle);scroll-margin-top:96px">
+    <div class="constellation" style="top:60px;left:-60px;width:300px;height:230px;color:var(--blue-200);opacity:0.8;transform:rotate(-6deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M40,60 L160,30 L100,120 M160,30 L230,80 L320,40 M230,80 L260,150"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="160" cy="30" r="12"/><circle cx="230" cy="80" r="10"/></g>
+        <g fill="currentColor"><circle cx="40" cy="60" r="3"/><circle cx="160" cy="30" r="5"/><circle cx="100" cy="120" r="3"/><circle cx="230" cy="80" r="4"/><circle cx="320" cy="40" r="3"/><circle cx="260" cy="150" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="top:20px;right:40px;width:150px;height:120px;color:var(--blue-300);opacity:0.6;transform:rotate(8deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M80,80 L180,60 L160,160"/></g>
+        <g fill="currentColor"><circle cx="80" cy="80" r="3"/><circle cx="180" cy="60" r="4"/><circle cx="160" cy="160" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-10);text-align:center">
+      <div style="max-width:720px;margin:0 auto">
+        <div class="eyebrow" style="color:var(--accent)">AI consultancy</div>
+        <h1 style="margin:16px 0 0;font-family:var(--font-display);font-size:var(--text-5xl);font-weight:700;letter-spacing:-0.03em;line-height:1.05;color:var(--text-strong)">Part of your team, shaped by your needs</h1>
+        <p style="margin:20px auto 0;font-size:var(--text-xl);line-height:1.5;color:var(--text-body);max-width:620px">We identify practical AI use cases, build them with you, and keep them running — freeing you up to focus on the business.</p>
+        <div style="display:flex;justify-content:center;margin-top:var(--space-6)">
+          <a class="btn btn-primary btn-lg" href="mailto:enquiries@verite.com?subject=Starting%20a%20conversation%20with%20V%C3%A9rit%C3%A9">Start a conversation<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section id="introduction" style="position:relative;overflow:hidden;scroll-margin-top:96px">
+    <div class="constellation" style="bottom:-10px;right:-40px;width:260px;height:200px;color:var(--blue-200);opacity:0.75;transform:rotate(4deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M60,240 L180,260 L140,150 M180,260 L280,220"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="180" cy="260" r="11"/></g>
+        <g fill="currentColor"><circle cx="60" cy="240" r="3"/><circle cx="180" cy="260" r="4"/><circle cx="140" cy="150" r="3"/><circle cx="280" cy="220" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="top:-40px;left:-160px;width:220px;height:160px;color:var(--blue-200);opacity:0.4;transform:rotate(-2deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M120,80 L220,40 L300,120 L360,80 M220,40 L180,180 L280,220 M300,120 L280,220"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="220" cy="40" r="10"/></g>
+        <g fill="currentColor"><circle cx="120" cy="80" r="3"/><circle cx="220" cy="40" r="4"/><circle cx="300" cy="120" r="3"/><circle cx="360" cy="80" r="3"/><circle cx="180" cy="180" r="5"/><circle cx="280" cy="220" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-10) var(--space-6)">
+      <div style="max-width:680px;margin:0 auto var(--space-8);text-align:center">
+        <div class="eyebrow" style="color:var(--accent)">Introduction</div>
+        <h2 class="section-h2" style="margin:12px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:var(--text-strong)">What is Vérité?</h2>
+        <p style="margin:16px 0 0;font-size:var(--text-lg);line-height:1.55;color:var(--text-muted)">We identify practical AI use cases, build them with you, and keep them running — freeing you up to focus on the business.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-hover">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;background:var(--blue-50);color:var(--brand);font-family:var(--font-mono);font-weight:600;font-size:14px;margin-bottom:16px">1</span>
+          <h3 style="margin:0 0 8px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">Who we are</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">A dedicated AI consultancy for small and mid-sized businesses — practical delivery, not hype.</p>
+        </div>
+        <div class="card card-hover">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;background:var(--blue-50);color:var(--brand);font-family:var(--font-mono);font-weight:600;font-size:14px;margin-bottom:16px">2</span>
+          <h3 style="margin:0 0 8px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">What we do</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">End to end: we scope the AI opportunity that's right for your business, build it, and keep it delivering after launch.</p>
+        </div>
+        <div class="card card-hover">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:999px;background:var(--blue-50);color:var(--brand);font-family:var(--font-mono);font-weight:600;font-size:14px;margin-bottom:16px">3</span>
+          <h3 style="margin:0 0 8px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">Why now</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">AI's moved beyond search and lookup — it now runs the processes that used to take whole teams. The businesses already using it can do more, with less. The ones that don't will be left behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunity (inverse navy band) -->
+  <section id="opportunity" style="position:relative;overflow:hidden;background:var(--surface-inverse);color:#fff;scroll-margin-top:96px">
+    <div class="constellation" style="top:30px;right:60px;width:340px;height:260px;color:var(--blue-300);opacity:0.55;transform:rotate(-3deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M120,80 L220,40 L300,120 L360,80 M220,40 L180,180 L280,220 M300,120 L280,220"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="220" cy="40" r="10"/><circle cx="280" cy="220" r="12"/></g>
+        <g fill="currentColor"><circle cx="120" cy="80" r="3"/><circle cx="220" cy="40" r="4"/><circle cx="300" cy="120" r="3"/><circle cx="360" cy="80" r="3"/><circle cx="180" cy="180" r="5"/><circle cx="280" cy="220" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="bottom:10px;left:40px;width:170px;height:130px;color:var(--blue-300);opacity:0.4;transform:rotate(-8deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M340,260 L260,280 L290,180"/></g>
+        <g fill="currentColor"><circle cx="340" cy="260" r="3"/><circle cx="260" cy="280" r="4"/><circle cx="290" cy="180" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-10) var(--space-6)">
+      <div style="max-width:680px;margin:0 auto var(--space-8);text-align:center">
+        <div class="eyebrow" style="color:var(--blue-300)">The opportunity</div>
+        <h2 class="section-h2" style="margin:12px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:#fff">Why you need AI consulting</h2>
+      </div>
+      <div class="grid grid-3">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius-lg);padding:var(--space-5)">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(255,255,255,0.1);color:var(--blue-200);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:#fff">The problem</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--slate-300)">AI is evolving faster than most businesses can track, and few have anyone dedicated to actually understanding what it can do. Without that, it's hard to spot the use cases worth building.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius-lg);padding:var(--space-5)">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(255,255,255,0.1);color:var(--blue-200);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:#fff">Cost of inaction</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--slate-300)">The advantage compounds regardless of sector: businesses move faster, do more with fewer people, and turn that efficiency into more customers. Every month you wait, that gap gets harder to close.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius-lg);padding:var(--space-5)">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(255,255,255,0.1);color:var(--blue-200);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:#fff">Cost of doing it badly</h3>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--slate-300)">Wasted spend on tools nobody uses to their full potential, exposure to data and security risk, and low-quality content reaching customers — AI theatre without results, and without metrics to prove it.</p>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid rgba(255,255,255,0.14);text-align:center">
+        <p style="margin:0 auto;max-width:640px;font-family:var(--font-display);font-weight:600;font-size:var(--text-xl);letter-spacing:-0.01em;line-height:1.4;color:rgba(255,255,255,0.92)">Vérité is the bridge from "interested in AI" to getting real value from it — pragmatic, accountable, built around your business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section id="approach" style="position:relative;overflow:hidden;scroll-margin-top:96px">
+    <div class="constellation" style="top:50px;left:-40px;width:280px;height:210px;color:var(--blue-200);opacity:0.8;transform:rotate(5deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M340,60 L260,100 L300,190 M260,100 L180,80"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="260" cy="100" r="11"/></g>
+        <g fill="currentColor"><circle cx="340" cy="60" r="3"/><circle cx="260" cy="100" r="4"/><circle cx="300" cy="190" r="3"/><circle cx="180" cy="80" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="bottom:-30px;right:80px;width:380px;height:280px;color:var(--blue-200);opacity:0.45;transform:rotate(3deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M40,260 L160,190 L100,110 M160,190 L230,240 L320,190 M230,240 L260,300"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="160" cy="190" r="14"/></g>
+        <g fill="currentColor"><circle cx="40" cy="260" r="3"/><circle cx="160" cy="190" r="5"/><circle cx="100" cy="110" r="3"/><circle cx="230" cy="240" r="4"/><circle cx="320" cy="190" r="3"/><circle cx="260" cy="300" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-10) var(--space-6)">
+      <div style="max-width:680px;margin:0 auto var(--space-8);text-align:center">
+        <div class="eyebrow" style="color:var(--accent)">Our approach</div>
+        <h2 class="section-h2" style="margin:12px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:var(--text-strong)">How we work</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-hover">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--blue-50);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
+            <h3 style="margin:0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">Discovery</h3>
+            <span style="white-space:nowrap;font-family:var(--font-mono);font-size:12px;color:var(--text-subtle);letter-spacing:0.02em">~2 weeks</span>
+          </div>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">We cut through the hype, educate your team, and prioritise the use cases specific to your business.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--border-default);font-size:var(--text-sm);color:var(--text-muted)"><b style="color:var(--text-body);font-weight:600">Output:</b> a prioritised roadmap.</div>
+        </div>
+        <div class="card card-hover">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--blue-50);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
+            <h3 style="margin:0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">Implementation</h3>
+            <span style="white-space:nowrap;font-family:var(--font-mono);font-size:12px;color:var(--text-subtle);letter-spacing:0.02em">~1–2 months</span>
+          </div>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">We build the highest-priority use cases hands-on — practical delivery, not slideware.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--border-default);font-size:var(--text-sm);color:var(--text-muted)"><b style="color:var(--text-body);font-weight:600">Output:</b> live AI workflows.</div>
+        </div>
+        <div class="card card-hover">
+          <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--blue-50);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
+            <h3 style="margin:0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--text-strong)">Maintenance</h3>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-subtle);letter-spacing:0.02em">Ongoing</span>
+          </div>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">Ongoing, retainer-based support — keeping solutions running and evolving as your business grows.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--border-default);font-size:var(--text-sm);color:var(--text-muted)"><b style="color:var(--text-body);font-weight:600">Output:</b> a lasting partnership.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track record -->
+  <section id="experience" style="position:relative;overflow:hidden;background:var(--surface-sunken);scroll-margin-top:96px">
+    <div class="constellation" style="bottom:20px;left:80px;width:300px;height:220px;color:var(--blue-200);opacity:0.85;transform:rotate(-4deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M340,60 L260,100 L300,190 M260,100 L180,80"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="260" cy="100" r="11"/></g>
+        <g fill="currentColor"><circle cx="340" cy="60" r="3"/><circle cx="260" cy="100" r="4"/><circle cx="300" cy="190" r="3"/><circle cx="180" cy="80" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="top:30px;right:100px;width:160px;height:120px;color:var(--blue-300);opacity:0.55;transform:rotate(10deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M40,60 L160,30 L100,120"/></g>
+        <g fill="currentColor"><circle cx="40" cy="60" r="3"/><circle cx="160" cy="30" r="4"/><circle cx="100" cy="120" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-10) var(--space-6)">
+      <div style="max-width:680px;margin:0 auto var(--space-8);text-align:center">
+        <div class="eyebrow" style="color:var(--accent)">Track record</div>
+        <h2 class="section-h2" style="margin:12px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:var(--text-strong)">Experience</h2>
+        <p style="margin:16px 0 0;font-size:var(--text-lg);line-height:1.55;color:var(--text-muted)">Our experience comes from inside real companies — embedded in the team, close to the day-to-day, building AI solutions that genuinely work for them in practice.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-hover pad-lg" style="display:flex;flex-direction:column">
+          <span class="badge badge-brand">Skill discovery &amp; design</span>
+          <h3 style="margin:16px 0 0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;letter-spacing:-0.01em;color:var(--text-strong)">Product Comms &amp; Marketing</h3>
+          <p style="margin:10px 0 0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">We identified the distinct workflows across the release-to-marketing arc and built a suite of Claude skills to cover each — from release notes to launch messaging — all deployed into Slack.</p>
+          <p style="margin-top:auto;padding-top:16px;font-family:var(--font-mono);font-size:13px;color:var(--brand);font-weight:600">Most-used skills across the 140-person company</p>
+        </div>
+        <div class="card card-hover pad-lg" style="display:flex;flex-direction:column">
+          <span class="badge badge-brand">Reporting automation</span>
+          <h3 style="margin:16px 0 0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;letter-spacing:-0.01em;color:var(--text-strong)">Sales Reporting</h3>
+          <p style="margin:10px 0 0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">Product needed to know which features drove live sales deals, but the signal lived nowhere analysable. We built it from zero — Claude connectors pulling HubSpot, sales inputs and other sources into a self-refreshing weekly dashboard.</p>
+          <p style="margin-top:auto;padding-top:16px;font-family:var(--font-mono);font-size:13px;color:var(--brand);font-weight:600">Drives roadmap planning with zero manual overhead</p>
+        </div>
+        <div class="card card-hover pad-lg" style="display:flex;flex-direction:column">
+          <span class="badge badge-brand">Setup &amp; integration</span>
+          <h3 style="margin:16px 0 0;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;letter-spacing:-0.01em;color:var(--text-strong)">Automated reporting</h3>
+          <p style="margin:10px 0 0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">Reporting relied on analysts running everything by hand. We built scripts, hosted in GitHub and connected to the external source systems, that pulled the data, ran the analysis and produced the insights, visuals and slides automatically.</p>
+          <p style="margin-top:auto;padding-top:16px;font-family:var(--font-mono);font-size:13px;color:var(--brand);font-weight:600">100+ analyst hours freed a quarter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" style="position:relative;overflow:hidden;scroll-margin-top:96px">
+    <div class="constellation" style="top:40px;left:-30px;width:250px;height:190px;color:var(--blue-200);opacity:0.85;transform:rotate(6deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M80,80 L180,60 L160,160 M180,60 L260,110"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="180" cy="60" r="10"/></g>
+        <g fill="currentColor"><circle cx="80" cy="80" r="3"/><circle cx="180" cy="60" r="4"/><circle cx="160" cy="160" r="3"/><circle cx="260" cy="110" r="3"/></g>
+      </svg>
+    </div>
+    <div style="position:relative;z-index:1;max-width:var(--container-max);margin:0 auto;padding:var(--space-10) var(--space-6)">
+      <div style="max-width:680px;margin:0 auto var(--space-8);text-align:center">
+        <div class="eyebrow" style="color:var(--accent)">The team</div>
+        <h2 class="section-h2" style="margin:12px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:var(--text-strong)">Who you'll work with</h2>
+      </div>
+      <div class="grid grid-2" style="max-width:760px;margin:0 auto">
+        <div class="card" style="text-align:center">
+          <span style="width:120px;height:120px;border-radius:999px;background:var(--brand);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:38px;margin-bottom:18px">JM</span>
+          <h3 style="margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:600;color:var(--text-strong)">Joe MacGuffog</h3>
+          <p style="margin:6px 0 14px;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Strategy &amp; Business Process Design</p>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">Strategy consultant with 7 years experience within leading UK start-ups and management consultancy. Expertise building automations to enhance product and marketing teams.</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <span style="width:120px;height:120px;border-radius:999px;background:var(--brand);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:38px;margin-bottom:18px">SM</span>
+          <h3 style="margin:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:600;color:var(--text-strong)">Sam MacGuffog</h3>
+          <p style="margin:6px 0 14px;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Workflow Implementation &amp; Analytics</p>
+          <p style="margin:0;font-size:var(--text-sm);line-height:1.55;color:var(--text-muted)">Data professional with deep experience across data and customer-facing work, specialised in spotting the highest-value opportunities and using AI to streamline inefficient processes.</p>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--border-subtle);text-align:center">
+        <p style="margin:0 auto;max-width:640px;font-family:var(--font-display);font-weight:600;font-size:var(--text-xl);letter-spacing:-0.01em;line-height:1.4;color:var(--text-strong)">We bring strategy, storytelling, AI and implementation to the table — and the credibility to back all of it.</p>
+      </div>
+    </div>
+    <div class="constellation" style="bottom:-20px;right:60px;width:340px;height:250px;color:var(--blue-200);opacity:0.4;transform:rotate(-5deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M340,260 L260,280 L290,180 M260,280 L180,240"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="260" cy="280" r="11"/></g>
+        <g fill="currentColor"><circle cx="340" cy="260" r="3"/><circle cx="260" cy="280" r="4"/><circle cx="290" cy="180" r="3"/><circle cx="180" cy="240" r="3"/></g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="scroll-margin-top:96px">
+    <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6) var(--space-10)">
+      <div style="position:relative;overflow:hidden;background:var(--surface-brand);border-radius:var(--radius-2xl,24px);padding:var(--space-9);text-align:center">
+        <div class="constellation" style="bottom:-20px;left:-20px;width:280px;height:210px;color:var(--blue-300);opacity:0.45;transform:rotate(4deg)" aria-hidden="true">
+          <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M120,80 L220,40 L300,120 L360,80 M220,40 L180,180 L280,220 M300,120 L280,220"/></g>
+            <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="220" cy="40" r="10"/><circle cx="280" cy="220" r="12"/></g>
+            <g fill="currentColor"><circle cx="120" cy="80" r="3"/><circle cx="220" cy="40" r="4"/><circle cx="300" cy="120" r="3"/><circle cx="360" cy="80" r="3"/><circle cx="180" cy="180" r="5"/><circle cx="280" cy="220" r="3"/></g>
+          </svg>
+        </div>
+        <div class="constellation" style="top:20px;right:70px;width:130px;height:100px;color:var(--blue-200);opacity:0.35" aria-hidden="true">
+          <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M60,240 L180,260 L140,150"/></g>
+            <g fill="currentColor"><circle cx="60" cy="240" r="3"/><circle cx="180" cy="260" r="4"/><circle cx="140" cy="150" r="3"/></g>
+          </svg>
+        </div>
+        <div style="position:relative;z-index:1;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-caps);color:var(--blue-300)">Get started</div>
+        <h2 class="section-h2" style="margin:14px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:#fff;position:relative;z-index:1">Get in touch</h2>
+        <p style="margin:14px auto 0;max-width:520px;font-size:var(--text-lg);line-height:1.55;color:var(--slate-300);position:relative;z-index:1">Email us at <a href="mailto:enquiries@verite.com" style="color:var(--blue-200);font-weight:600">enquiries@verite.com</a> and we'll set up a short call to talk through where AI could help your business. Expect a reply within two business days.</p>
+        <div style="display:flex;justify-content:center;margin-top:var(--space-6);position:relative;z-index:1">
+          <a class="btn btn-accent btn-lg" href="mailto:enquiries@verite.com?subject=Starting%20a%20conversation%20with%20V%C3%A9rit%C3%A9">Start a conversation<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="position:relative;overflow:hidden;background:var(--surface-inverse);text-align:center;padding:var(--space-8) 0">
+    <div class="constellation" style="top:-20px;right:calc(50% - 560px);width:240px;height:160px;color:var(--blue-300);opacity:0.35" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M40,60 L160,30 L100,120 M160,30 L230,80"/></g>
+        <g stroke="currentColor" fill="none" opacity="0.6"><circle cx="160" cy="30" r="10"/></g>
+        <g fill="currentColor"><circle cx="40" cy="60" r="3"/><circle cx="160" cy="30" r="4"/><circle cx="100" cy="120" r="3"/><circle cx="230" cy="80" r="3"/></g>
+      </svg>
+    </div>
+    <div class="constellation" style="bottom:-10px;left:calc(50% - 480px);width:180px;height:130px;color:var(--blue-200);opacity:0.3;transform:rotate(6deg)" aria-hidden="true">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M80,80 L180,60 L160,160 M180,60 L260,110"/></g>
+        <g fill="currentColor"><circle cx="80" cy="80" r="3"/><circle cx="180" cy="60" r="4"/><circle cx="160" cy="160" r="3"/><circle cx="260" cy="110" r="3"/></g>
+      </svg>
+    </div>
+    <span style="position:relative;z-index:1;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-0.03em;color:#fff">Vérité<span style="color:var(--blue-300)">.</span></span>
+    <p style="margin:12px 0 0;font-size:var(--text-xs);color:var(--slate-500)">© 2026 Vérité Consulting. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>

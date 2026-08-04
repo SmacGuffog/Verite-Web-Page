@@ -1,0 +1,77 @@
+:root {
+  /* ---- Brand blue (core) — deep, confident navy ---- */
+  --blue-50:  #EEF3FB;
+  --blue-100: #D9E4F4;
+  --blue-200: #B6C9E8;
+  --blue-300: #84A2D4;
+  --blue-400: #5077BC;
+  --blue-500: #2F569E;
+  --blue-600: #21427F;
+  --blue-700: #1A3566; /* core brand */
+  --blue-800: #142A51;
+  --blue-900: #0F1F3B;
+  --blue-950: #0A1526;
+
+  /* ---- Neutral slate ---- */
+  --slate-0:   #FFFFFF;
+  --slate-50:  #F8FAFC;
+  --slate-100: #F1F4F8;
+  --slate-200: #E4E9F0;
+  --slate-300: #CDD5E0;
+  --slate-400: #9AA7B8;
+  --slate-500: #6B7A8F;
+  --slate-600: #4A5768;
+  --slate-700: #333E4D;
+  --slate-800: #222A36;
+  --slate-900: #141920;
+
+  /* ---- Semantic hues ---- */
+  --green-50:  #E9F5EF;
+  --green-500: #1E8A5B;
+  --green-600: #17724A;
+  --amber-50:  #FBF2E3;
+  --amber-500: #B7791F;
+  --amber-600: #955F16;
+  --red-50:    #FBECEA;
+  --red-500:   #C0392B;
+  --red-600:   #9E2C21;
+
+  /* ================= Semantic aliases ================= */
+  /* Brand */
+  --brand:            var(--blue-700);
+  --brand-strong:     var(--blue-800);
+  --brand-soft:       var(--blue-50);
+  --accent:           var(--blue-500); /* interactive / links */
+  --accent-hover:     var(--blue-600);
+
+  /* Text */
+  --text-strong:  var(--slate-900);
+  --text-body:    var(--slate-700);
+  --text-muted:   var(--slate-500);
+  --text-subtle:  var(--slate-400);
+  --text-onbrand: var(--slate-0);
+  --text-link:    var(--blue-600);
+
+  /* Surfaces */
+  --surface-page:    var(--slate-50);
+  --surface-card:    var(--slate-0);
+  --surface-sunken:  var(--slate-100);
+  --surface-inverse: var(--blue-900);
+  --surface-brand:   var(--blue-700);
+
+  /* Borders */
+  --border-subtle:  var(--slate-200);
+  --border-default: var(--slate-300);
+  --border-strong:  var(--slate-400);
+  --border-focus:   var(--blue-500);
+
+  /* Semantic states */
+  --success:      var(--green-500);
+  --success-soft: var(--green-50);
+  --warning:      var(--amber-500);
+  --warning-soft: var(--amber-50);
+  --danger:       var(--red-500);
+  --danger-soft:  var(--red-50);
+
+  --focus-ring: 0 0 0 3px rgba(47, 86, 158, 0.35);
+}
