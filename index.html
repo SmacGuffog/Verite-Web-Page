@@ -119,6 +119,9 @@
   .grid { display: grid; gap: var(--space-5); }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  /* Let grid items shrink below their content's min-width so cards never
+     force horizontal overflow on very narrow screens. */
+  .grid > * { min-width: 0; }
 
   @media (max-width: 900px) {
     .grid-3, .grid-2 { grid-template-columns: 1fr; }
@@ -436,7 +439,7 @@
         </div>
         <div style="position:relative;z-index:1;font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-caps);color:var(--blue-300)">Get started</div>
         <h2 class="section-h2" style="margin:14px 0 0;font-family:var(--font-display);font-size:var(--text-3xl);font-weight:600;letter-spacing:-0.02em;color:#fff;position:relative;z-index:1">Get in touch</h2>
-        <p style="margin:14px auto 0;max-width:520px;font-size:var(--text-lg);line-height:1.55;color:var(--slate-300);position:relative;z-index:1">Email us at <a href="mailto:enquiriesveriteconsulting@gmail.com" style="color:var(--blue-200);font-weight:600">enquiriesveriteconsulting@gmail.com</a> and we'll set up a short call to talk through where AI could help your business. Expect a reply within two business days.</p>
+        <p style="margin:14px auto 0;max-width:520px;font-size:var(--text-lg);line-height:1.55;color:var(--slate-300);position:relative;z-index:1;overflow-wrap:anywhere;word-break:break-word">Email us at <a href="mailto:enquiriesveriteconsulting@gmail.com" style="color:var(--blue-200);font-weight:600;overflow-wrap:anywhere;word-break:break-word">enquiriesveriteconsulting@gmail.com</a> and we'll set up a short call to talk through where AI could help your business. Expect a reply within two business days.</p>
         <div style="display:flex;justify-content:center;margin-top:var(--space-6);position:relative;z-index:1">
           <a class="btn btn-accent btn-lg" href="mailto:enquiriesveriteconsulting@gmail.com?subject=Starting%20a%20conversation%20with%20V%C3%A9rit%C3%A9">Start a conversation<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
