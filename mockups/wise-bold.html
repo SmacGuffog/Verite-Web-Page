@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vérité — Wise Bold (mockup)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --blue-50:#EEF3FB;--blue-100:#D9E4F4;--blue-200:#B6C9E8;--blue-300:#84A2D4;--blue-400:#5077BC;
+    --blue-500:#2F569E;--blue-600:#21427F;--blue-700:#1A3566;--blue-800:#142A51;--blue-900:#0F1F3B;--blue-950:#0A1526;
+    --slate-0:#FFFFFF;--slate-50:#F8FAFC;--slate-100:#F1F4F8;--slate-200:#E4E9F0;--slate-300:#CDD5E0;
+    --slate-400:#9AA7B8;--slate-500:#6B7A8F;--slate-600:#4A5768;--slate-700:#333E4D;--slate-900:#141920;
+    --brand:var(--blue-700);--accent:var(--blue-500);
+    /* Wise-style bright "signal" accent — a bright blue that pops on navy (dark text on it) */
+    --signal:#8FB4FF;--signal-strong:#A9C6FF;
+    --text-strong:var(--slate-900);--text-body:var(--slate-700);--text-muted:var(--slate-600);
+    --font-sans:'Inter',system-ui,sans-serif;--font-display:'Inter Tight','Inter',sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
+    --r-card:24px;--r-pill:999px;--maxw:1120px;--ease:cubic-bezier(.2,0,.1,1);
+    --shadow-lift:0 20px 46px rgba(5,12,28,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--blue-950);color:var(--slate-300);font-family:var(--font-sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{margin:0;font-family:var(--font-display);letter-spacing:-0.03em;line-height:1.05;color:#fff}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .constellation{position:absolute;pointer-events:none;z-index:0}
+  .constellation svg{width:100%;height:100%;display:block}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--signal);background:rgba(143,180,255,.12);border-radius:var(--r-pill);padding:7px 14px}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-sans);font-weight:700;font-size:16px;line-height:1;border-radius:var(--r-pill);padding:16px 26px;border:2px solid transparent;cursor:pointer;transition:transform .12s var(--ease),background .12s var(--ease),box-shadow .12s var(--ease)}
+  .btn-signal{background:var(--signal);color:var(--blue-950)}
+  .btn-signal:hover{background:var(--signal-strong);transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(10,21,38,.72);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar{display:flex;align-items:center;gap:24px;height:78px}
+  .wordmark{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-0.04em;color:#fff}
+  .wordmark .dot{color:var(--signal)}
+  nav.top{display:flex;gap:4px;margin-left:16px}
+  nav.top a{font-size:15px;font-weight:500;color:var(--blue-200);padding:8px 12px;border-radius:10px}
+  nav.top a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .bar .cta{margin-left:auto}
+  .btn-sm{padding:11px 20px;font-size:15px}
+
+  section{position:relative;overflow:hidden}
+  .pad{padding:104px 0}
+  /* light block for contrast/alternation */
+  .light{background:var(--slate-50);color:var(--text-body)}
+  .light h1,.light h2,.light h3{color:var(--text-strong)}
+  .light .eyebrow{color:var(--brand);background:var(--blue-50)}
+
+  .head{max-width:720px;margin:0 auto 56px;text-align:center}
+  .head h2{font-size:52px;margin-top:18px}
+  .head p{font-size:20px;margin-top:18px}
+  .light .head p{color:var(--text-muted)}
+  .dark .head p{color:var(--blue-200)}
+
+  /* Hero */
+  .hero{padding:128px 0 112px;text-align:center;background:radial-gradient(1100px 520px at 50% -10%, #16305c 0%, var(--blue-950) 62%)}
+  .hero h1{font-size:82px;font-weight:800;max-width:15ch;margin:24px auto 0;color:#fff}
+  .hero .lede{font-size:22px;color:var(--blue-200);max-width:640px;margin:24px auto 0;line-height:1.5}
+  .hero .cta-row{display:flex;gap:14px;justify-content:center;margin-top:38px;flex-wrap:wrap}
+  .hero .trust{margin-top:34px;font-family:var(--font-mono);font-size:13px;letter-spacing:.02em;color:var(--blue-300)}
+
+  .grid{display:grid;gap:24px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.grid>*{min-width:0}
+
+  /* light cards (Approach) */
+  .card{background:#fff;border:1px solid var(--slate-200);border-radius:var(--r-card);padding:34px;box-shadow:0 1px 3px rgba(15,31,59,.08);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,31,59,.12)}
+  .tile{width:56px;height:56px;border-radius:16px;background:var(--blue-50);color:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+  .card h3{font-size:22px;letter-spacing:-0.02em}
+  .card p{margin-top:10px;font-size:15.5px;color:var(--text-muted);line-height:1.6}
+  .timing{font-family:var(--font-mono);font-size:12px;color:var(--slate-500);background:var(--slate-100);padding:4px 9px;border-radius:var(--r-pill)}
+  .out{margin-top:20px;padding-top:16px;border-top:1px dashed var(--slate-300);font-size:14.5px;color:var(--text-muted)}
+  .out b{color:var(--text-strong)}
+
+  /* dark opportunity cards */
+  .dark{background:var(--blue-900)}
+  .ocard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px}
+  .ocard .tile{background:rgba(143,180,255,.14);color:var(--signal)}
+  .ocard h3{font-size:20px}
+  .ocard p{margin-top:10px;color:var(--slate-300);font-size:15px;line-height:1.6}
+  .pull{margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);text-align:center}
+  .pull p{font-family:var(--font-display);font-weight:700;font-size:26px;letter-spacing:-0.02em;max-width:720px;margin:0 auto;line-height:1.35;color:#fff}
+  .pull .sig{color:var(--signal)}
+
+  /* Team (light) */
+  .person{text-align:center;align-items:center}
+  .person img{width:132px;height:132px;border-radius:var(--r-pill);object-fit:cover;border:3px solid #fff;box-shadow:0 16px 34px rgba(15,31,59,.14);margin-bottom:20px}
+  .person h3{font-size:24px}
+  .role{margin:8px 0 14px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+
+  @media(max-width:900px){.g3,.g2{grid-template-columns:1fr}.head h2{font-size:38px}.hero h1{font-size:52px}nav.top{display:none}}
+  @media(max-width:600px){.hero h1{font-size:40px}.head h2{font-size:30px}.pad{padding:72px 0}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="site"><div class="wrap bar">
+  <span class="wordmark">Vérité<span class="dot">.</span></span>
+  <nav class="top"><a href="#">Introduction</a><a href="#">Opportunity</a><a href="#">Approach</a><a href="#">Experience</a><a href="#">Team</a></nav>
+  <div class="cta"><a class="btn btn-signal btn-sm" href="#">Start a conversation</a></div>
+</div></header>
+
+<!-- HERO (dark) -->
+<section class="hero">
+  <div class="constellation" style="inset:0;opacity:.5" aria-hidden="true">
+    <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#4d6ea8" stroke-opacity=".5" stroke-width="1.2"><path d="M120,140 L240,90 L320,190 L400,120 M240,90 L200,260 M980,120 L1100,80 L1180,180 L1260,120 M1100,80 L1060,250"/></g>
+      <g fill="#7392c8"><circle cx="120" cy="140" r="3"/><circle cx="240" cy="90" r="5"/><circle cx="320" cy="190" r="3"/><circle cx="400" cy="120" r="3"/><circle cx="200" cy="260" r="4"/><circle cx="980" cy="120" r="3"/><circle cx="1100" cy="80" r="5"/><circle cx="1180" cy="180" r="3"/><circle cx="1260" cy="120" r="3"/><circle cx="1060" cy="250" r="4"/></g>
+    </svg>
+  </div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <span class="eyebrow">AI consultancy</span>
+    <h1>Part of your team, shaped by your needs</h1>
+    <p class="lede">We identify practical AI use cases, build them with you, and keep them running — freeing you up to focus on the business.</p>
+    <div class="cta-row">
+      <a class="btn btn-signal" href="#">Start a conversation →</a>
+      <a class="btn btn-ghost" href="#">See how we work</a>
+    </div>
+    <p class="trust">Find · Implement · Maintain — evidence over hype, every step.</p>
+  </div>
+</section>
+
+<!-- APPROACH (light, for contrast) -->
+<section class="light pad">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Our approach</span><h2>How we work</h2></div>
+    <div class="grid g3">
+      <div class="card"><div class="tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div style="display:flex;align-items:center;gap:10px"><h3>Discovery</h3><span class="timing">~2 weeks</span></div><p>We cut through the hype, educate your team, and prioritise the use cases specific to your business.</p><div class="out"><b>Output:</b> a prioritised roadmap.</div></div>
+      <div class="card"><div class="tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div><div style="display:flex;align-items:center;gap:10px"><h3>Implementation</h3><span class="timing">~1–2 months</span></div><p>We build the highest-priority use cases hands-on — practical delivery, not slideware.</p><div class="out"><b>Output:</b> live AI workflows.</div></div>
+      <div class="card"><div class="tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div style="display:flex;align-items:center;gap:10px"><h3>Maintenance</h3><span class="timing">Ongoing</span></div><p>Ongoing, retainer-based support — keeping solutions running and evolving as your business grows.</p><div class="out"><b>Output:</b> a lasting partnership.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY (dark) -->
+<section class="dark pad">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">The opportunity</span><h2>Why you need AI consulting</h2></div>
+    <div class="grid g3">
+      <div class="ocard"><div class="tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h3>The problem</h3><p>AI is evolving faster than most businesses can track, and few have anyone dedicated to understanding what it can do.</p></div>
+      <div class="ocard"><div class="tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Cost of inaction</h3><p>The advantage compounds: businesses move faster and do more with fewer people. Every month you wait, the gap gets harder to close.</p></div>
+      <div class="ocard"><div class="tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h3>Cost of doing it badly</h3><p>Wasted spend on tools nobody uses, data and security risk, and AI theatre without results — or metrics to prove it.</p></div>
+    </div>
+    <div class="pull"><p>Vérité is the bridge from <span class="sig">"interested in AI"</span> to getting real value from it — pragmatic, accountable, built around your business.</p></div>
+  </div>
+</section>
+
+<!-- TEAM (light) -->
+<section class="light pad">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">The team</span><h2>Who you'll work with</h2></div>
+    <div class="grid g2" style="max-width:820px;margin:0 auto">
+      <div class="card person"><img src="../assets/joe.jpg" alt="Joe MacGuffog"><h3>Joe MacGuffog</h3><p class="role">Strategy &amp; Business Process Design</p><p>Strategy consultant with 7 years experience within leading UK start-ups and management consultancy. Expertise building automations to enhance product and marketing teams.</p></div>
+      <div class="card person"><img src="../assets/sam.jpg" alt="Sam MacGuffog"><h3>Sam MacGuffog</h3><p class="role">Workflow Implementation &amp; Analytics</p><p>Data professional with deep experience across data and customer-facing work, specialised in spotting the highest-value opportunities and using AI to streamline inefficient processes.</p></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
