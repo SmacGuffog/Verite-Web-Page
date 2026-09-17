@@ -248,6 +248,33 @@
     .float{animation:none!important}
     .btn,.card{transition:none!important}
   }
+
+  /* Privacy policy content */
+  .policy{max-width:760px;margin:0 auto}
+  .policy h1{margin:16px 0 0;font-family:var(--font-display);font-size:44px;letter-spacing:-.02em;line-height:1.1;color:var(--text-strong)}
+  .policy .updated{margin-top:16px;font-size:14px;font-weight:600;color:var(--text-muted);font-family:var(--font-mono)}
+  .policy .lead{margin-top:22px;font-size:19px;color:var(--text-body);line-height:1.65}
+  .policy .sec{padding:34px 0;border-top:1px solid var(--slate-200)}
+  .policy .sec h2{font-family:var(--font-display);font-size:24px;letter-spacing:-.02em;line-height:1.2;color:var(--text-strong)}
+  .policy .sec p{margin-top:14px;font-size:16px;color:var(--text-body);line-height:1.65}
+  .policy .sec ul{margin:16px 0 0;padding-left:22px}
+  .policy .sec li{margin-top:10px;font-size:16px;color:var(--text-body);line-height:1.6}
+  .policy .sec li::marker{color:var(--slate-400)}
+  .policy .sec a{color:var(--accent);font-weight:500}
+  .policy .sec strong{color:var(--text-strong);font-weight:600}
+  .policy .contact{font-size:16px;line-height:1.9}
+  /* Policy tables */
+  .policy .tbl-wrap{margin-top:20px;overflow-x:auto;border:1px solid var(--slate-200);border-radius:16px;-webkit-overflow-scrolling:touch}
+  .policy table{width:100%;border-collapse:collapse;font-size:15px;min-width:480px}
+  .policy th{text-align:left;font-family:var(--font-sans);font-weight:600;color:var(--text-strong);background:var(--slate-50);padding:14px 18px;border-bottom:1px solid var(--slate-200);line-height:1.4}
+  .policy td{padding:14px 18px;border-bottom:1px solid var(--slate-200);color:var(--text-body);vertical-align:top;line-height:1.5}
+  .policy tbody tr:last-child td{border-bottom:0}
+  .policy th+th,.policy td+td{border-left:1px solid var(--slate-200)}
+  @media(max-width:600px){
+    .policy h1{font-size:32px}
+    .policy .lead{font-size:17px}
+    .policy .sec h2{font-size:21px}
+  }
 </style>
 </head>
 <body>
@@ -261,13 +288,137 @@
 </div></header>
 
 <main class="pad">
-  <div class="wrap" style="max-width:760px">
+  <div class="wrap policy">
     <span class="eyebrow" style="color:var(--accent)">Legal</span>
-    <h1 style="margin:16px 0 0;font-family:var(--font-display);font-size:44px;letter-spacing:-.02em;line-height:1.1;color:var(--text-strong)">Privacy Policy</h1>
-    <div style="margin-top:32px;padding:32px;border:1px dashed var(--border-default);border-radius:var(--r-card);background:var(--surface-sunken)">
-      <p style="margin:0;font-family:var(--font-mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)">Placeholder</p>
-      <p style="margin:10px 0 0;font-size:16px;color:var(--text-body);line-height:1.6">The privacy policy content will be added here.</p>
-    </div>
+    <h1>Privacy Policy</h1>
+    <p class="updated"><strong>Last updated:</strong> [DD Month 2026]</p>
+    <p class="lead">This policy explains how Vérité Consulting ("Vérité", "we", "us") collects and uses personal information when you visit our website, get in touch, or work with us. We keep it short and in plain English. If anything is unclear, email us at <a href="mailto:enquiries@verite-consulting.com">enquiries@verite-consulting.com</a>.</p>
+
+    <section class="sec">
+      <h2>1. Who we are</h2>
+      <p>Vérité Consulting is an AI consultancy based in London, UK, run by Joe MacGuffog and Sam MacGuffog. For the purposes of UK data protection law (the UK GDPR and the Data Protection Act 2018), we are the controller of the personal information described in this policy.</p>
+      <p class="contact"><strong>Contact:</strong> <a href="mailto:enquiries@verite-consulting.com">enquiries@verite-consulting.com</a><br>
+      <strong>Address:</strong> [Business address]<br>
+      <strong>ICO registration number:</strong> [Number, once registered]</p>
+    </section>
+
+    <section class="sec">
+      <h2>2. What information we collect</h2>
+      <p>We only collect what we need. This may include:</p>
+      <ul>
+        <li><strong>Contact details:</strong> your name, email address, phone number, job title and company, when you email us, book a call or fill in a form.</li>
+        <li><strong>Communications:</strong> the content of emails, messages and call notes when we discuss your enquiry or project.</li>
+        <li><strong>Business relationship details:</strong> information needed to set up and manage an engagement, such as billing contacts and invoicing details.</li>
+        <li><strong>Website usage data:</strong> [If you use analytics] basic, aggregated information about how visitors use the site, such as pages visited, device type and approximate location. [If you use no analytics, replace with: "We do not use analytics or tracking tools on this website."]</li>
+      </ul>
+      <p>We do not intentionally collect special category data (for example health, religion or ethnicity), and we ask that you don't send it to us.</p>
+    </section>
+
+    <section class="sec">
+      <h2>3. How we collect it</h2>
+      <ul>
+        <li><strong>Directly from you:</strong> when you email us, book a call, complete a form or speak with us.</li>
+        <li><strong>Automatically:</strong> [If applicable] through cookies or analytics when you use our website.</li>
+        <li><strong>From public sources:</strong> such as your company website or LinkedIn profile, when researching a potential engagement.</li>
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>4. How we use it, and our legal basis</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">What we use it for</th><th scope="col">Legal basis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Responding to your enquiry and arranging calls</td><td>Legitimate interests (replying to people who contact us)</td></tr>
+            <tr><td>Preparing proposals and delivering services</td><td>Contract, or steps taken before entering a contract</td></tr>
+            <tr><td>Invoicing and keeping business and tax records</td><td>Legal obligation</td></tr>
+            <tr><td>Occasional updates about our services to business contacts</td><td>Legitimate interests, and you can opt out at any time</td></tr>
+            <tr><td>Understanding how our website is used</td><td>[Consent, if using non-essential cookies]</td></tr>
+            <tr><td>Protecting our business and handling disputes</td><td>Legitimate interests</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We do not sell your personal information, and we do not use it for automated decision-making that has legal or similarly significant effects on you.</p>
+    </section>
+
+    <section class="sec">
+      <h2>5. Client data during engagements</h2>
+      <p>When we work on a project, we may be given access to your business systems or data. That data is governed by our agreement with you. In most cases we act as a <strong>processor</strong> on your behalf, and you remain the controller. We only use that data to deliver the agreed work, and we apply appropriate security measures to protect it.</p>
+    </section>
+
+    <section class="sec">
+      <h2>6. Who we share it with</h2>
+      <p>We only share personal information where necessary, with trusted providers who help us run the business. These include:</p>
+      <ul>
+        <li><strong>Email and productivity:</strong> [e.g. Google Workspace]</li>
+        <li><strong>Website hosting:</strong> [e.g. hosting provider]</li>
+        <li><strong>Forms and scheduling:</strong> [e.g. Tally, Calendly]</li>
+        <li><strong>Accounting and payments:</strong> [e.g. accounting software, bank]</li>
+        <li><strong>AI and software tools:</strong> [e.g. tools used to deliver client work, where relevant]</li>
+        <li><strong>Professional advisers:</strong> such as accountants or lawyers, where needed</li>
+      </ul>
+      <p>We may also share information if required by law or to protect our legal rights.</p>
+    </section>
+
+    <section class="sec">
+      <h2>7. International transfers</h2>
+      <p>Some of our providers store data outside the UK, including in the US and the EU. Where this happens, we make sure appropriate safeguards are in place, such as UK adequacy regulations, the UK International Data Transfer Agreement, or the UK Addendum to the EU Standard Contractual Clauses.</p>
+    </section>
+
+    <section class="sec">
+      <h2>8. How long we keep it</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Type of information</th><th scope="col">How long we keep it</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Enquiries that don't become a project</td><td>Up to [12] months after our last contact</td></tr>
+            <tr><td>Client and project records</td><td>For the length of the engagement, plus up to [6] years for legal and tax purposes</td></tr>
+            <tr><td>Financial records</td><td>6 years, as required by law</td></tr>
+            <tr><td>Website analytics</td><td>[Up to 14 months, or as set by the provider]</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>After that, we securely delete or anonymise it.</p>
+    </section>
+
+    <section class="sec">
+      <h2>9. How we protect it</h2>
+      <p>We use reasonable technical and organisational measures to keep personal information secure. These include access controls, multi-factor authentication, encrypted connections and limiting access to people who need it. No system is completely secure, but we take protecting your information seriously.</p>
+    </section>
+
+    <section class="sec">
+      <h2>10. Your rights</h2>
+      <p>Under UK data protection law, you have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> the personal information we hold about you</li>
+        <li><strong>Correct</strong> information that is inaccurate or incomplete</li>
+        <li><strong>Delete</strong> your information in certain circumstances</li>
+        <li><strong>Restrict</strong> or <strong>object to</strong> how we use it</li>
+        <li><strong>Data portability</strong>, meaning you can receive your information in a usable format</li>
+        <li><strong>Withdraw consent</strong> at any time, where we rely on consent</li>
+      </ul>
+      <p>To exercise any of these rights, email <a href="mailto:enquiries@verite-consulting.com">enquiries@verite-consulting.com</a>. We will respond within one month. There is usually no charge.</p>
+    </section>
+
+    <section class="sec">
+      <h2>11. Cookies</h2>
+      <p>[Option A, no non-essential cookies:] Our website only uses cookies that are strictly necessary for it to work. We do not use advertising or tracking cookies.</p>
+      <p>[Option B, with analytics:] We use a small number of cookies to understand how visitors use our site. Non-essential cookies are only set with your consent, which you can change at any time through [cookie settings link].</p>
+    </section>
+
+    <section class="sec">
+      <h2>12. Complaints</h2>
+      <p>If you have concerns about how we handle your information, please contact us first so we can try to resolve them. You also have the right to complain to the Information Commissioner's Office (ICO), the UK's data protection regulator, at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a> or on 0303 123 1113.</p>
+    </section>
+
+    <section class="sec">
+      <h2>13. Changes to this policy</h2>
+      <p>We may update this policy from time to time. The latest version will always be on this page, with the date it was last updated shown at the top.</p>
+    </section>
   </div>
 </main>
 
