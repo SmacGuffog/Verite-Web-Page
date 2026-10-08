@@ -19,7 +19,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | [`services/`](./services/index.html) | Services: why you need AI consulting, and how we work (Discovery, Implementation, Maintenance). |
 | [`use-cases/`](./use-cases/index.html) | Use Cases: the track-record cards. Add a new `<article class="case card hoverable reveal">` to the grid for each new case. |
 | [`about/`](./about/index.html) | About: "What is Vérité?" in full, the founders, and the "worked at" logo strip. |
-| [`contact/`](./contact/index.html) | Contact: email, LinkedIn and the Tally enquiry form (set the form ID where marked `TODO_TALLY_FORM_ID`). |
+| [`contact/`](./contact/index.html) | Contact: the Tally enquiry form (ID `J9NQbX`) first, then email and LinkedIn as the second option. |
 | [`privacy/`](./privacy/index.html) | Privacy policy. Linked from the footer; excluded from `sitemap.xml` and disallowed in `robots.txt` until finalised. |
 
 ### Shared assets
