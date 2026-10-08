@@ -15,10 +15,10 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 
 | Path | Page |
 | --- | --- |
-| [`index.html`](./index.html) | Home: hero, logo strip, a condensed "What is Vérité?", an approach teaser, a use-cases teaser and a closing CTA. |
+| [`index.html`](./index.html) | Home: hero with the neural-net canvas, a condensed "What is Vérité?", an approach teaser and a closing CTA. |
 | [`services/`](./services/index.html) | Services: why you need AI consulting, and how we work (Discovery, Implementation, Maintenance). |
 | [`use-cases/`](./use-cases/index.html) | Use Cases: the track-record cards. Add a new `<article class="case card hoverable reveal">` to the grid for each new case. |
-| [`about/`](./about/index.html) | About: "What is Vérité?" in full, the team, and the logo strip. |
+| [`about/`](./about/index.html) | About: "What is Vérité?" in full, the founders, and the "worked at" logo strip. |
 | [`contact/`](./contact/index.html) | Contact: email, LinkedIn and the Tally enquiry form (set the form ID where marked `TODO_TALLY_FORM_ID`). |
 | [`privacy/`](./privacy/index.html) | Privacy policy. Linked from the footer; excluded from `sitemap.xml` and disallowed in `robots.txt` until finalised. |
 
@@ -27,7 +27,8 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | Path | What it is |
 | --- | --- |
 | [`assets/css/site.css`](./assets/css/site.css) | The one stylesheet every page links: design tokens, components (buttons, cards, badges, timeline, dark block, CTA panel), header, footer, mobile nav and the reveal-on-scroll styles. Edit styles here, never in a page. |
-| [`assets/js/site.js`](./assets/js/site.js) | The only scripts: footer year and reveal-on-scroll. Progressive enhancement; pages work without it. |
+| [`assets/js/site.js`](./assets/js/site.js) | Shared scripts: footer year and reveal-on-scroll. Progressive enhancement; pages work without it. |
+| [`assets/js/hero-net.js`](./assets/js/hero-net.js) | Home only: the interactive neural-net canvas behind the hero (vanilla canvas, cursor-responsive, static frame under reduced motion, nothing drawn with JavaScript off). |
 | `assets/joe.jpg`, `assets/sam.jpg`, `assets/logos/` | Team photos and the greyed company logos. |
 | `design/` | The original Claude Design source and design system this site implements. Reference only; do not edit. |
 
