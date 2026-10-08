@@ -21,7 +21,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | [`about/`](./about/index.html) | About: "What is Vérité?" in full, the founders, and the "worked at" logo strip. |
 | [`contact/`](./contact/index.html) | Contact: a native enquiry form (name, company, work email, company size, what AI could help with; optional AI stage and how you heard of us) that posts to Web3Forms (which emails enquiries@verite-consulting.com) and redirects to `contact/thanks/`; works without JavaScript. Email and LinkedIn below as the second option. |
 | [`contact/thanks/`](./contact/thanks/index.html) | Thank-you page after a form submission (`noindex`, not in the sitemap). |
-| [`privacy/`](./privacy/index.html) | Privacy policy. Linked from the footer; excluded from `sitemap.xml` and disallowed in `robots.txt` until finalised. |
+| [`privacy/`](./privacy/index.html) | Privacy policy (UK GDPR), linked from the footer and listed in `sitemap.xml`. Business address and ICO registration number are omitted until available. |
 
 ### Shared assets
 
@@ -43,7 +43,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 - The mobile menu is a CSS-only `<details>` disclosure, so it works with
   JavaScript off.
 - Copy is British English with no em dashes.
-- `sitemap.xml` lists the five public pages; `robots.txt` points to it.
+- `sitemap.xml` lists the five public pages plus the privacy policy; `robots.txt` points to it.
 
 ### Local preview
 
