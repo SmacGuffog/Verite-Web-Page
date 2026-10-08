@@ -290,6 +290,20 @@
   .field input,.field textarea{font:inherit;font-size:16px;color:var(--text-body);background:#fff;border:1px solid var(--slate-300);border-radius:14px;padding:14px 16px;width:100%;transition:border-color .12s var(--ease),box-shadow .12s var(--ease)}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(47,86,158,.25)}
   .field textarea{resize:vertical;min-height:150px}
+  .field select{font:inherit;font-size:16px;color:var(--text-body);background:#fff;border:1px solid var(--slate-300);border-radius:14px;padding:14px 44px 14px 16px;width:100%;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5768' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 16px center;transition:border-color .12s var(--ease),box-shadow .12s var(--ease)}
+  .field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(47,86,158,.25)}
+  .field select:invalid{color:var(--slate-500)}
+  .field input::placeholder,.field textarea::placeholder{color:var(--slate-400)}
+  .choices-field{border:0;padding:0;margin:0}
+  .choices-field legend{font-size:14px;font-weight:600;color:var(--text-strong);padding:0;margin-bottom:8px}
+  .choices{display:flex;flex-wrap:wrap;gap:10px}
+  .choice{position:relative;cursor:pointer}
+  .choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+  .choice span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--slate-300);border-radius:var(--r-pill);font-size:15px;font-weight:500;color:var(--text-body);background:#fff;transition:border-color .12s var(--ease),background .12s var(--ease)}
+  .choice:hover span{border-color:var(--slate-400)}
+  .choice input:checked+span{border-color:var(--accent);background:var(--blue-50);color:var(--brand);font-weight:600}
+  .choice input:focus-visible+span{box-shadow:0 0 0 3px rgba(47,86,158,.25)}
+  .form-privacy{font-size:14px;color:var(--text-muted)}
   .enquiry-form .btn{justify-self:start}
   .hp{display:none}
   @media(max-width:600px){.enquiry-form .row{grid-template-columns:1fr}}

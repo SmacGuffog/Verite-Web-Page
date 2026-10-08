@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261008e">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261008f">
 </head>
 <body>
 <header class="site"><div class="wrap bar">
@@ -81,11 +81,33 @@
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="row">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
-          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" required autocomplete="organization" placeholder="Company name"></div>
         </div>
-        <div class="field"><label for="f-company">Company <span class="opt">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
-        <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" rows="6" required></textarea></div>
-        <button class="btn btn-primary" type="submit">Send enquiry <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        <div class="row">
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+          <div class="field"><label for="f-size">Company size</label>
+            <select id="f-size" name="Company size" required>
+              <option value="" selected disabled>Select</option>
+              <option>1 to 10</option>
+              <option>11 to 50</option>
+              <option>51 to 200</option>
+              <option>201 to 500</option>
+              <option>500+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-help">What are you hoping AI could help with?</label><textarea id="f-help" name="What are you hoping AI could help with?" rows="5" required placeholder="e.g. our reporting takes days every month, or we've bought tools nobody uses properly"></textarea></div>
+        <fieldset class="field choices-field">
+          <legend>Where are you at with AI? <span class="opt">(optional)</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="Where are you at with AI?" value="Just exploring"><span>Just exploring</span></label>
+            <label class="choice"><input type="radio" name="Where are you at with AI?" value="I know the problem, need help building it"><span>I know the problem, need help building it</span></label>
+            <label class="choice"><input type="radio" name="Where are you at with AI?" value="Already using AI, want more from it"><span>Already using AI, want more from it</span></label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="f-hear">How did you hear about us? <span class="opt">(optional)</span></label><input id="f-hear" name="How did you hear about us?" type="text" placeholder="Let us know"></div>
+        <p class="form-privacy">We'll only use your details to reply to your enquiry. See our <a href="/privacy/">privacy policy</a>.</p>
+        <button class="btn btn-primary" type="submit">Start a conversation <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </form>
     </div>
   </div>
