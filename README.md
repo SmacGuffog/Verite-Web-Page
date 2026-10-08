@@ -1,36 +1,53 @@
-# Vérité — landing page
+# Vérité website
 
-Marketing landing page for **Vérité**, a dedicated AI consultancy for small and
+Marketing website for **Vérité**, a dedicated AI consultancy for small and
 mid-sized businesses. We identify practical AI use cases, build them with you,
 and keep them running.
 
-## What's here
+Live at [verite-consulting.com](https://verite-consulting.com), deployed by
+GitHub Pages from `main` (`.github/workflows/static.yml`; custom domain via
+`CNAME`).
+
+## Structure
+
+Plain static files: no build step, no framework, and every page renders fully
+with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
+
+| Path | Page |
+| --- | --- |
+| [`index.html`](./index.html) | Home: hero, logo strip, a condensed "What is Vérité?", an approach teaser, a use-cases teaser and a closing CTA. |
+| [`services/`](./services/index.html) | Services: why you need AI consulting, and how we work (Discovery, Implementation, Maintenance). |
+| [`use-cases/`](./use-cases/index.html) | Use Cases: the track-record cards. Add a new `<article class="case card hoverable reveal">` to the grid for each new case. |
+| [`about/`](./about/index.html) | About: "What is Vérité?" in full, the team, and the logo strip. |
+| [`contact/`](./contact/index.html) | Contact: email, LinkedIn and the Tally enquiry form (set the form ID where marked `TODO_TALLY_FORM_ID`). |
+| [`privacy/`](./privacy/index.html) | Privacy policy. Linked from the footer; excluded from `sitemap.xml` and disallowed in `robots.txt` until finalised. |
+
+### Shared assets
 
 | Path | What it is |
 | --- | --- |
-| [`index.html`](./index.html) | The landing page — a self-contained, responsive static page. Open it in a browser or serve the repo root. |
-| [`design/`](./design) | The original Claude Design source this page implements. |
+| [`assets/css/site.css`](./assets/css/site.css) | The one stylesheet every page links: design tokens, components (buttons, cards, badges, timeline, dark block, CTA panel), header, footer, mobile nav and the reveal-on-scroll styles. Edit styles here, never in a page. |
+| [`assets/js/site.js`](./assets/js/site.js) | The only scripts: footer year and reveal-on-scroll. Progressive enhancement; pages work without it. |
+| `assets/joe.jpg`, `assets/sam.jpg`, `assets/logos/` | Team photos and the greyed company logos. |
+| `design/` | The original Claude Design source and design system this site implements. Reference only; do not edit. |
 
-### `index.html`
+### Conventions
 
-A single, self-contained file: the Vérité design-system tokens are inlined, web
-fonts (Inter / Inter Tight / JetBrains Mono) load from Google Fonts, and every
-design-system component used in the design (Button, Card, Badge, Icon) is
-rendered as plain HTML/CSS. No build step and no runtime JavaScript — it works
-on any static host (e.g. GitHub Pages) and renders without JS enabled.
+- The header and footer are duplicated in each HTML file (not injected by
+  script). If you change them, change every page.
+- Use root-relative paths (`/assets/...`, `/services/`) so nested pages resolve.
+- The current page's nav link carries `aria-current="page"`.
+- The mobile menu is a CSS-only `<details>` disclosure, so it works with
+  JavaScript off.
+- Copy is British English with no em dashes.
+- `sitemap.xml` lists the five public pages; `robots.txt` points to it.
 
-Sections: hero, introduction, the opportunity, our approach (Discovery →
-Implementation → Maintenance), track record, team, and a get-in-touch CTA.
+### Local preview
 
-### `design/`
+Serve the repo root (so root-relative paths resolve), for example:
 
-The source of truth this page was built from, exported from Claude Design:
+```
+python3 -m http.server 8000
+```
 
-- `Verite Landing Page.dc.html` — the design file.
-- `_ds/v-rit-consulting-design-system-a7995696-…/` — the Vérité design system
-  (tokens + component bundle) the design imports.
-- `support.js` — the Claude Design runtime that resolves the design file's
-  components in the browser.
-
-`index.html` is a faithful static implementation of `design/Verite Landing
-Page.dc.html`; the design file remains the reference for any future changes.
+then open `http://localhost:8000/`.
