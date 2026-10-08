@@ -3,7 +3,8 @@
    Reduced motion: draws one static frame and ignores the cursor. Pauses when the hero is
    off-screen or the tab is hidden.
    Cursor: nodes are attracted within PULL but repelled inside HOLD, so they gather in a ring
-   around the pointer rather than converging on it.
+   around the pointer rather than converging on it. Touch devices get no pointer tracking.
+   Resizes (including the mobile address bar) scale the existing layout; they never reshuffle it.
    Legibility: nodes are kept out of an elliptical zone measured from the headline and
    subhead, and a soft fade mutes anything still behind the copy (about 15% opacity max). */
 (function () {
@@ -48,6 +49,7 @@
 
   function size() {
     var r = hero.getBoundingClientRect();
+    var oldW = W, oldH = H;
     W = Math.max(1, Math.round(r.width));
     H = Math.max(1, Math.round(r.height));
     var dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -55,7 +57,11 @@
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     measure();
-    seed();
+    if (!nodes.length) { seed(); return; }
+    /* On resize (including the mobile address bar showing and hiding) keep the
+       existing layout and scale it into the new size, rather than reshuffling. */
+    var sx = oldW ? W / oldW : 1, sy = oldH ? H / oldH : 1;
+    for (var i = 0; i < nodes.length; i++) { nodes[i].x *= sx; nodes[i].y *= sy; }
   }
 
   function seed() {
@@ -146,11 +152,15 @@
   setTimeout(remeasure, 900);               /* after the headline reveal transition */
   if (reduce) { draw(); return; }           /* static frame, no loop, no cursor */
 
-  hero.addEventListener('pointermove', function (e) {
-    var r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  hero.addEventListener('pointerleave', function () { mouse.x = -1e4; mouse.y = -1e4; });
+  var hoverable = !(window.matchMedia && window.matchMedia('(hover: none)').matches);
+  if (hoverable) {                          /* on touch devices the net drifts on its own; a thumb is not a cursor */
+    hero.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'touch') return;
+      var r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    });
+    hero.addEventListener('pointerleave', function () { mouse.x = -1e4; mouse.y = -1e4; });
+  }
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
