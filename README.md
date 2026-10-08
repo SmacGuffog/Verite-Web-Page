@@ -37,6 +37,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 - The header and footer are duplicated in each HTML file (not injected by
   script). If you change them, change every page.
 - Use root-relative paths (`/assets/...`, `/services/`) so nested pages resolve.
+- Shared assets are linked with a `?v=` query. Bump it on every page when you change `site.css` or a script, so browsers fetch the new file instead of a cached one.
 - The current page's nav link carries `aria-current="page"`.
 - The mobile menu is a CSS-only `<details>` disclosure, so it works with
   JavaScript off.
