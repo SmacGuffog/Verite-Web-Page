@@ -1,7 +1,9 @@
 /* Home hero: lightweight interactive neural-net background (vanilla canvas, no library).
    Progressive enhancement: with JavaScript off nothing draws and the hero reads as before.
    Reduced motion: draws one static frame and ignores the cursor. Pauses when the hero is
-   off-screen or the tab is hidden. */
+   off-screen or the tab is hidden.
+   Legibility: nodes are kept out of an elliptical zone measured from the headline and
+   subhead, and a soft fade mutes anything still behind the copy (about 15% opacity max). */
 (function () {
   var canvas = document.getElementById('hero-net');
   if (!canvas || !canvas.getContext) return;
@@ -17,6 +19,29 @@
 
   var W = 0, H = 0, nodes = [], raf = 0, running = false, onScreen = true;
   var mouse = { x: -1e4, y: -1e4 };
+  var zone = null;            /* keep-out ellipse behind the hero copy: {cx, cy, rx, ry} */
+  var PAD = 44;               /* padding around the measured text block, px */
+  var FADE = 0.85;            /* how much the fade mutes the net at the centre of the zone */
+
+  /* Measure the headline and subhead so the keep-out zone follows the real text. */
+  function measure() {
+    var els = hero.querySelectorAll('h1, .lede');
+    if (!els.length) { zone = null; return; }
+    var c = canvas.getBoundingClientRect(), x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    for (var i = 0; i < els.length; i++) {
+      var r = els[i].getBoundingClientRect();
+      if (!r.width || !r.height) continue;
+      x0 = Math.min(x0, r.left - c.left); y0 = Math.min(y0, r.top - c.top);
+      x1 = Math.max(x1, r.right - c.left); y1 = Math.max(y1, r.bottom - c.top);
+    }
+    if (x1 <= x0) { zone = null; return; }
+    zone = { cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, rx: (x1 - x0) / 2 + PAD, ry: (y1 - y0) / 2 + PAD };
+  }
+  function inZone(x, y) {
+    if (!zone) return false;
+    var nx = (x - zone.cx) / zone.rx, ny = (y - zone.cy) / zone.ry;
+    return nx * nx + ny * ny < 1;
+  }
 
   function size() {
     var r = hero.getBoundingClientRect();
@@ -26,6 +51,7 @@
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    measure();
     seed();
   }
 
@@ -33,7 +59,9 @@
     var n = Math.round(Math.min(90, Math.max(36, (W * H) / 16000)));
     nodes = [];
     for (var i = 0; i < n; i++) {
-      nodes.push({ x: Math.random() * W, y: Math.random() * H,
+      var x = Math.random() * W, y = Math.random() * H, tries = 0;
+      while (inZone(x, y) && tries++ < 12) { x = Math.random() * W; y = Math.random() * H; }
+      nodes.push({ x: x, y: y,
         vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3,
         r: 1.6 + Math.random() * 1.8 });
     }
@@ -46,6 +74,13 @@
       if (d < PULL && d > 0.001) {           /* gentle attraction towards the cursor */
         var f = 0.025 * (1 - d / PULL);
         n.vx += (dx / d) * f; n.vy += (dy / d) * f;
+      }
+      if (zone) {                            /* gentle push out of the text zone */
+        var zx = (n.x - zone.cx) / zone.rx, zy = (n.y - zone.cy) / zone.ry, zr = zx * zx + zy * zy;
+        if (zr < 1) {
+          var zl = Math.sqrt(zr) || 0.001, zf = 0.22 * (1 - zr);
+          n.vx += (zx / zl) * zf; n.vy += (zy / zl) * zf;
+        }
       }
       n.vx *= 0.985; n.vy *= 0.985;          /* damping keeps things calm */
       var v = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
@@ -77,6 +112,19 @@
       ctx.fillStyle = 'rgba(' + NODE + ',' + (near ? 0.75 : 0.5) + ')';
       ctx.beginPath(); ctx.arc(n.x, n.y, near ? n.r + 0.8 : n.r, 0, Math.PI * 2); ctx.fill();
     }
+    if (zone) {                              /* soft fade: erase alpha under the copy, strongest at the centre */
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.translate(zone.cx, zone.cy);
+      ctx.scale(1, zone.ry / zone.rx);
+      var g = ctx.createRadialGradient(0, 0, 0, 0, 0, zone.rx * 1.2);
+      g.addColorStop(0, 'rgba(0,0,0,' + FADE + ')');
+      g.addColorStop(0.7, 'rgba(0,0,0,' + (FADE * 0.8).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(0, 0, zone.rx * 1.2, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
   }
 
   function frame() { step(); draw(); raf = requestAnimationFrame(frame); }
@@ -90,6 +138,9 @@
   });
 
   size();
+  function remeasure() { measure(); if (reduce) draw(); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+  setTimeout(remeasure, 900);               /* after the headline reveal transition */
   if (reduce) { draw(); return; }           /* static frame, no loop, no cursor */
 
   hero.addEventListener('pointermove', function (e) {
