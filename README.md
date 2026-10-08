@@ -19,7 +19,8 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | [`services/`](./services/index.html) | Services: why you need AI consulting, and how we work (Discovery, Implementation, Maintenance). |
 | [`use-cases/`](./use-cases/index.html) | Use Cases: the track-record cards. Add a new `<article class="case card hoverable reveal">` to the grid for each new case. |
 | [`about/`](./about/index.html) | About: "What is Vérité?" in full, the founders, and the "worked at" logo strip. |
-| [`contact/`](./contact/index.html) | Contact: the Tally enquiry form (ID `J9NQbX`, sized to the form by Tally's loader; a link to the form with JavaScript off) first, then email and LinkedIn as the second option. |
+| [`contact/`](./contact/index.html) | Contact: a native enquiry form that posts to Web3Forms (which emails enquiries@verite-consulting.com) and redirects to `contact/thanks/`; works without JavaScript. Email and LinkedIn below as the second option. |
+| [`contact/thanks/`](./contact/thanks/index.html) | Thank-you page after a form submission (`noindex`, not in the sitemap). |
 | [`privacy/`](./privacy/index.html) | Privacy policy. Linked from the footer; excluded from `sitemap.xml` and disallowed in `robots.txt` until finalised. |
 
 ### Shared assets
