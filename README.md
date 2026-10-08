@@ -16,7 +16,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | Path | Page |
 | --- | --- |
 | [`index.html`](./index.html) | Home: hero with the neural-net canvas, a condensed "What is Vérité?", an approach teaser and a closing CTA. |
-| [`services/`](./services/index.html) | Services: why you need AI consulting, and how we work (Discovery, Implementation, Maintenance). |
+| [`services/`](./services/index.html) | Services: why you need AI consulting, how we work (Discovery, Implementation, Maintenance) and an "In more detail" section on what each stage involves. Durations are given as orders of magnitude, not numbers; timings are agreed per engagement. |
 | [`use-cases/`](./use-cases/index.html) | Use Cases: the track-record cards. Add a new `<article class="case card hoverable reveal">` to the grid for each new case. |
 | [`about/`](./about/index.html) | About: "What is Vérité?" in full, the founders, and the "worked at" logo strip. |
 | [`contact/`](./contact/index.html) | Contact: a native enquiry form (name, company, work email, company size, what AI could help with; optional AI stage and how you heard of us) that posts to Web3Forms (which emails enquiries@verite-consulting.com) and redirects to `contact/thanks/`; works without JavaScript. Email and LinkedIn below as the second option. |
