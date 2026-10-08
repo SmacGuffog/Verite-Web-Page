@@ -2,6 +2,8 @@
    Progressive enhancement: with JavaScript off nothing draws and the hero reads as before.
    Reduced motion: draws one static frame and ignores the cursor. Pauses when the hero is
    off-screen or the tab is hidden.
+   Cursor: nodes are attracted within PULL but repelled inside HOLD, so they gather in a ring
+   around the pointer rather than converging on it.
    Legibility: nodes are kept out of an elliptical zone measured from the headline and
    subhead, and a soft fade mutes anything still behind the copy (about 15% opacity max). */
 (function () {
@@ -15,6 +17,7 @@
   var NODE = '47,86,158';     /* --accent (blue-500) */
   var LINK = 130;             /* max link distance, px */
   var PULL = 170;             /* cursor influence radius, px */
+  var HOLD = 70;              /* standoff ring: inside this nodes are pushed away, so they never pile onto the cursor */
   var MAXV = 0.6;             /* speed cap, px per frame */
 
   var W = 0, H = 0, nodes = [], raf = 0, running = false, onScreen = true;
@@ -71,8 +74,8 @@
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
       var dx = mouse.x - n.x, dy = mouse.y - n.y, d = Math.sqrt(dx * dx + dy * dy);
-      if (d < PULL && d > 0.001) {           /* gentle attraction towards the cursor */
-        var f = 0.025 * (1 - d / PULL);
+      if (d < PULL && d > 0.001) {           /* drawn towards the cursor, held off at the standoff ring */
+        var f = d > HOLD ? 0.025 * (1 - d / PULL) : -0.05 * (1 - d / HOLD);
         n.vx += (dx / d) * f; n.vy += (dy / d) * f;
       }
       if (zone) {                            /* gentle push out of the text zone */

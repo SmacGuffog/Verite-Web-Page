@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261008b">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261008d">
 </head>
 <body>
 <header class="site"><div class="wrap bar">
@@ -75,10 +75,10 @@
       <h2>Send an enquiry</h2>
       <div class="form-embed">
         <iframe
-          src="https://tally.so/embed/J9NQbX?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1"
           data-tally-src="https://tally.so/embed/J9NQbX?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
-          loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0"
+          loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"
           title="Vérité enquiry form"></iframe>
+        <noscript><p class="form-note" style="padding:20px">The enquiry form needs JavaScript. You can <a href="https://tally.so/r/J9NQbX">open it on Tally</a> or email us instead.</p></noscript>
       </div>
       <p class="form-note">If the form doesn't load, email us at <a href="mailto:enquiries@verite-consulting.com">enquiries@verite-consulting.com</a>.</p>
     </div>
@@ -99,7 +99,8 @@
     </div>
   </div>
 </section>
-<script async src="https://tally.so/widgets/embed.js"></script>
+<!-- Tally's standard loader: sets the iframe src and resizes it to the form's height (dynamicHeight) -->
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
 </main>
 
 <!-- FOOTER -->
