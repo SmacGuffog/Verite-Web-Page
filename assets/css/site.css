@@ -311,6 +311,12 @@
   @media(max-width:600px){.enquiry-form .row{grid-template-columns:1fr}}
   /* Services: stage detail cards under the timeline */
   .stages{display:grid;gap:24px;max-width:880px;margin:0 auto}
+  /* Stacking stage cards: stack-cards.js adds .stack when the effect fits the viewport */
+  section.stack-host{overflow:visible}  /* sections clip overflow by default, which would disable sticky */
+  .stages.stack{gap:0}
+  .stages.stack .stage{position:sticky;transform-origin:50% 0;will-change:transform}
+  .stages.stack .stage+.stage{margin-top:30vh}
+  .js .stages.stack .stage{transition:opacity .5s var(--ease-emph),box-shadow .2s var(--ease)}
   .stage__meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
   .stage__meta h3{font-size:24px}
   .stage .point:first-child{padding-top:18px}

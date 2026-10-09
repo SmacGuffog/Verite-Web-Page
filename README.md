@@ -30,6 +30,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | [`assets/css/site.css`](./assets/css/site.css) | The one stylesheet every page links: design tokens, components (buttons, cards, badges, timeline, dark block, CTA panel), header, footer, mobile nav and the reveal-on-scroll styles. Edit styles here, never in a page. |
 | [`assets/js/site.js`](./assets/js/site.js) | Shared scripts: footer year and reveal-on-scroll. Progressive enhancement; pages work without it. |
 | [`assets/js/hero-net.js`](./assets/js/hero-net.js) | Home only: the interactive neural-net canvas behind the hero (vanilla canvas, cursor-responsive, static frame under reduced motion, nothing drawn with JavaScript off). |
+| [`assets/js/stack-cards.js`](./assets/js/stack-cards.js) | Services only: the stacking animation for the three "What happens at each stage" cards (each card pins below the header and the next slides over it). Switches itself off under reduced motion or when a card would not fit on screen, so phones and JavaScript-off get the plain stacked layout. |
 | `assets/joe.jpg`, `assets/sam.jpg`, `assets/logos/` | Team photos and the greyed company logos. |
 | `design/` | The original Claude Design source and design system this site implements. Reference only; do not edit. |
 
