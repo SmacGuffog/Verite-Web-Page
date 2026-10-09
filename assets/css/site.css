@@ -119,8 +119,10 @@
   .phase__node{width:44px;height:44px;border-radius:var(--r-pill);background:var(--blue-50);color:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px #fff,0 0 0 8px var(--blue-100);margin-bottom:24px;flex:none}
   .phase__meta{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
   .phase__meta h3{font-family:var(--font-display);font-size:20px;letter-spacing:-.01em;color:var(--text-strong)}
-  .phase__body p{font-size:15.5px;color:var(--text-muted);line-height:1.6;max-width:34ch;margin:0 auto}
-  .phase .out{margin-top:16px;padding-top:14px;border-top:1px dashed var(--slate-300);font-size:14.5px;color:var(--text-muted)}
+  .phase__body{display:flex;flex-direction:column;flex:1;width:100%}
+  .phase__body p{font-size:15.5px;color:var(--text-muted);line-height:1.6;max-width:34ch;margin:0 auto;padding-bottom:16px}
+  .phase__body p:last-child{padding-bottom:0}
+  .phase .out{margin-top:auto;padding-top:14px;border-top:1px dashed var(--slate-300);font-size:14.5px;color:var(--text-muted)}
   .phase .out b{color:var(--text-strong)}
 
   /* Experience: featured case + supporting cases; outcome is the lead line */
