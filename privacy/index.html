@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261009b">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261015a">
 </head>
 <body>
 <header class="site"><div class="wrap bar">
@@ -76,7 +76,7 @@
         <li><strong>Contact details:</strong> your name, email address, phone number, job title, company and company size, when you email us, book a call or use the enquiry form.</li>
         <li><strong>Communications:</strong> the content of emails, messages and call notes when we discuss your enquiry or project.</li>
         <li><strong>Business relationship details:</strong> information needed to set up and manage an engagement, such as billing contacts and invoicing details.</li>
-        <li><strong>Website data:</strong> we don't use analytics or tracking tools. Our hosting provider records standard server logs, including IP addresses, to run and secure the site.</li>
+        <li><strong>Website data:</strong> if you accept cookies, we use Apollo.io's website tracker. It uses your IP address and cookies to identify the company you are visiting from and the pages you view. For visitors in the United States it may also identify you as an individual. If you decline, it does not run. Our hosting provider also records standard server logs, including IP addresses, to run and secure the site.</li>
       </ul>
       <p>We do not intentionally collect special category data (for example health, religion or ethnicity), and we ask that you don't send it to us.</p>
     </section>
@@ -85,7 +85,7 @@
       <h2>3. How we collect it</h2>
       <ul>
         <li><strong>Directly from you:</strong> when you email us, book a call, complete a form or speak with us.</li>
-        <li><strong>Automatically:</strong> limited technical data, such as your IP address, is recorded by our hosting and font providers when you load the site.</li>
+        <li><strong>Automatically:</strong> limited technical data, such as your IP address, is recorded by our hosting and font providers when you load the site, and by Apollo.io if you accept cookies.</li>
         <li><strong>From public sources:</strong> such as your company website or LinkedIn profile, when researching a potential engagement.</li>
       </ul>
     </section>
@@ -103,6 +103,7 @@
             <tr><td>Invoicing and keeping business and tax records</td><td>Legal obligation</td></tr>
             <tr><td>Occasional updates about our services to business contacts</td><td>Legitimate interests, and you can opt out at any time</td></tr>
             <tr><td>Running and securing the website</td><td>Legitimate interests</td></tr>
+            <tr><td>Understanding which companies visit our website, using Apollo.io</td><td>Consent, which you can withdraw at any time</td></tr>
             <tr><td>Protecting our business and handling disputes</td><td>Legitimate interests</td></tr>
           </tbody>
         </table>
@@ -123,6 +124,7 @@
         <li><strong>Website hosting:</strong> GitHub Pages (GitHub, Inc.)</li>
         <li><strong>Enquiry form:</strong> Web3Forms, which passes form submissions to our email</li>
         <li><strong>Web fonts:</strong> Google Fonts</li>
+        <li><strong>Website visitor insights:</strong> Apollo.io, only if you accept cookies</li>
         <li><strong>Accounting and payments:</strong> our accountants, accounting software and bank</li>
         <li><strong>AI and software tools:</strong> AI tools we use to deliver client work, such as Claude, ChatGPT and Gemini. We agree with each client which tools we use and what data goes into them.</li>
         <li><strong>Professional advisers:</strong> such as accountants or lawyers, where needed</li>
@@ -172,8 +174,8 @@
     </section>
 
     <section class="sec">
-      <h2>11. Cookies</h2>
-      <p>Our website only uses cookies that are strictly necessary for it to work. We do not use advertising or tracking cookies.</p>
+      <h2 id="cookies">11. Cookies</h2>
+      <p>Our website uses cookies that are strictly necessary for it to work. With your consent, we also use cookies from Apollo.io to understand which companies visit our website. We ask before these run, and they do not load if you decline. We remember your choice in your browser, and you can change it at any time using the Cookie settings link at the bottom of every page. We do not use advertising cookies.</p>
     </section>
 
     <section class="sec">
@@ -217,9 +219,11 @@
       <span>London, UK</span>
       <span class="sep" aria-hidden="true">·</span>
       <a href="/privacy/">Privacy</a>
+      <span class="cookie-link" hidden><span class="sep" aria-hidden="true">·</span><button type="button" class="cookie-settings" data-cookie-settings>Cookie settings</button></span>
     </div>
   </div>
 </footer>
 <script src="/assets/js/site.js?v=20261008b"></script>
+<script src="/assets/js/consent.js?v=20261015a"></script>
 </body>
 </html>
