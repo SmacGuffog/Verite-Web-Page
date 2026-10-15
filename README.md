@@ -31,6 +31,7 @@ with JavaScript disabled. Folder-style clean URLs, one `index.html` per page.
 | [`assets/js/site.js`](./assets/js/site.js) | Shared scripts: footer year and reveal-on-scroll. Progressive enhancement; pages work without it. |
 | [`assets/js/hero-net.js`](./assets/js/hero-net.js) | Home only: the interactive neural-net canvas behind the hero (vanilla canvas, cursor-responsive, static frame under reduced motion, nothing drawn with JavaScript off). |
 | [`assets/js/stack-cards.js`](./assets/js/stack-cards.js) | Services only: the stacking animation for the three "What happens at each stage" cards (each card pins below the header and the next slides over it). Switches itself off under reduced motion or when a card would not fit on screen, so phones and JavaScript-off get the plain stacked layout. |
+| [`assets/js/consent.js`](./assets/js/consent.js) | Every page: the cookie banner and the Apollo.io website tracker. Apollo loads only after a visitor accepts; the choice is kept in `localStorage` and can be changed from the footer's Cookie settings link. Nothing loads, and no banner shows, with JavaScript off. If you change what this tracks, update the privacy policy (sections 2, 3, 4, 6 and 11). |
 | `assets/joe.jpg`, `assets/sam.jpg`, `assets/logos/` | Team photos and the greyed company logos. |
 | `design/` | The original Claude Design source and design system this site implements. Reference only; do not edit. |
 
